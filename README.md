@@ -6,7 +6,20 @@
 
 Satellite pass time, Doppler shift, the hydrogen-line frequency, and frequency-to-band lookup. Same input, same answer, no API, no cost, works offline.
 
-The calculator ships in a pull request. It will use published physical constants and clearly labeled band-name ranges, not a live TLE network.
+It uses published physical constants and clearly labeled band-name ranges. It does not download TLEs or talk to a network.
+
+```sh
+python space_radio.py hydrogen
+python space_radio.py hydrogen --radial-ms 21000
+python space_radio.py doppler 145MHz --radial-ms 7215
+python space_radio.py pass 400 --freq 145MHz
+python space_radio.py period 400
+python space_radio.py band 1420.405751MHz
+```
+
+Constants: speed of light 299792458 m/s (exact SI), hydrogen-line rest frequency 1420.405751 MHz, mean Earth radius 6371 km (a sphere, not a geoid), and Earth GM 3.986004418e14 m^3/s^2. Positive radial velocity means the source is receding, so the observed frequency falls. Pass time is the geometric visibility of an overhead circular-orbit pass, not a prediction for a named satellite.
+
+Band names are commonly used ITU radio bands and IEEE Std 521 radar-letter bands, for lookup only. They are not a license, an allocation, or an official assignment.
 
 ## Run it
 
